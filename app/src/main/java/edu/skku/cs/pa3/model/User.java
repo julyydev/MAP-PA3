@@ -11,7 +11,7 @@ public class User {
         return email;
     }
 
-    private void setEmail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -19,7 +19,7 @@ public class User {
         return nickname;
     }
 
-    private void setNickname(String nickname) {
+    public void setNickname(String nickname) {
         this.nickname = nickname;
     }
 
@@ -27,7 +27,7 @@ public class User {
         return profileImage;
     }
 
-    private void setProfileImage(String profileImage) {
+    public void setProfileImage(String profileImage) {
         this.profileImage = profileImage;
     }
 
