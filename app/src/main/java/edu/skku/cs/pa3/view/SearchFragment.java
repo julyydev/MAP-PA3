@@ -1,6 +1,7 @@
 package edu.skku.cs.pa3.view;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
 
@@ -37,6 +39,14 @@ public class SearchFragment extends Fragment implements SearchContract.View {
         recipeGridView = rootView.findViewById(R.id.gridView);
         recipeGridAdapter = new RecipeGridAdapter();
         recipeGridView.setAdapter(recipeGridAdapter);
+
+        recipeGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getContext(), DetailActivity.class);
+                startActivity(intent);
+            }
+        });
 
         presenter = new SearchPresenter(SearchFragment.this);
         presenter.setAdapterModel(recipeGridAdapter);
