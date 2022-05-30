@@ -32,6 +32,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.6.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.cardview:cardview:1.0.0' // card view
     implementation 'com.kakao.sdk:v2-user:2.10.0' // 카카오 로그인
     implementation 'com.github.bumptech.glide:glide:4.11.0' // glide
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'

@@ -54,8 +54,11 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
         Bundle bundle = new Bundle();
         bundle.putString("email", email);
+        bundle.putString("nickname", nickname);
+        bundle.putString("profileImage", profileImage);
         pagerAdapter.setArguments(0, bundle);
         pagerAdapter.setArguments(1, bundle);
+        pagerAdapter.setArguments(2, bundle);
         viewPager.setAdapter(pagerAdapter);
         viewPager.setUserInputEnabled(false); // 이 줄을 주석처리 하면 슬라이딩으로 탭을 바꿀 수 있다.
 

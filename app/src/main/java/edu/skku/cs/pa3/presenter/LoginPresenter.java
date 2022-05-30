@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.google.gson.Gson;
+import com.kakao.sdk.auth.AuthApiClient;
 import com.kakao.sdk.auth.model.OAuthToken;
 import com.kakao.sdk.user.UserApiClient;
 
@@ -47,13 +48,6 @@ public class LoginPresenter implements LoginContract.Presenter {
     Function2<OAuthToken, Throwable, Unit> callback = new Function2<OAuthToken, Throwable, Unit>() {
         @Override
         public Unit invoke(OAuthToken oAuthToken, Throwable throwable) {
-//            if (oAuthToken != null) {
-//
-//            }
-//            if (throwable != null) {
-//
-//            }
-//            user.getUserInformation();
             loadActivity(context);
             return null;
         }
@@ -68,6 +62,12 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     public void loadActivity(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra("email", user.getEmail());
+        intent.putExtra("nickname", user.getNickname());
+        intent.putExtra("profileImage", user.getProfileImage());
+        context.startActivity(intent);
+
         ///////
         OkHttpClient client = new OkHttpClient();
 
@@ -95,11 +95,5 @@ public class LoginPresenter implements LoginContract.Presenter {
         });
 
         ///////
-
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra("email", user.getEmail());
-        intent.putExtra("nickname", user.getNickname());
-        intent.putExtra("profileImage", user.getProfileImage());
-        context.startActivity(intent);
     }
 }
