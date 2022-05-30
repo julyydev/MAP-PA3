@@ -1,5 +1,6 @@
 package edu.skku.cs.pa3.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,7 +9,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -31,6 +35,8 @@ import okhttp3.Response;
 public class LikeFragment extends Fragment {
     private GridView likeGridView;
     private LikeGridAdapter likeGridAdapter;
+    TextView textView;
+    String email;
 
     public LikeFragment() {
         // Required empty public constructor
@@ -42,11 +48,34 @@ public class LikeFragment extends Fragment {
         // Inflate the layout for this fragment
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_like, container, false);
 
-        likeGridView = rootView.findViewById(R.id.likeGridView);
+        likeGridView = rootView.findViewById(android.R.id.list);
+        textView = rootView.findViewById(android.R.id.empty);
+        likeGridView.setEmptyView(textView);
         likeGridAdapter = new LikeGridAdapter();
         likeGridView.setAdapter(likeGridAdapter);
 
-        String email = getArguments().getString("email");
+        email = getArguments().getString("email");
+
+        likeGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getContext(), DetailActivity.class);
+                intent.putExtra("email", email);
+                intent.putExtra("id", likeGridAdapter.getItem(i).getId());
+                intent.putExtra("title", likeGridAdapter.getItem(i).getTitle());
+                intent.putExtra("image", likeGridAdapter.getItem(i).getImage());
+                intent.putExtra("from", "like");
+
+                startActivity(intent);
+            }
+        });
+
+        return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
 
         OkHttpClient client = new OkHttpClient();
 
@@ -81,7 +110,5 @@ public class LikeFragment extends Fragment {
                 });
             }
         });
-
-        return rootView;
     }
 }

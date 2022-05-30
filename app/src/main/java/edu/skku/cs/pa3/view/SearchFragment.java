@@ -52,6 +52,7 @@ public class SearchFragment extends Fragment implements SearchContract.View {
                 intent.putExtra("id", recipeGridAdapter.getItem(i).getId());
                 intent.putExtra("title", recipeGridAdapter.getItem(i).getTitle());
                 intent.putExtra("image", recipeGridAdapter.getItem(i).getImage());
+                intent.putExtra("from", "search");
 
                 startActivity(intent);
             }

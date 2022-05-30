@@ -61,7 +61,7 @@ public class RecipesByName implements SearchContract.Model {
         OkHttpClient client = new OkHttpClient();
 
         HttpUrl.Builder builder = HttpUrl.parse("https://api.spoonacular.com/recipes/complexSearch").newBuilder();
-        builder.addQueryParameter("apiKey", "644a503313de4685ab88325146e8b5e9");
+        builder.addQueryParameter("apiKey", "f335ea8dc7be41eb83d9c496a216d2c8");
         builder.addQueryParameter("query", name);
         builder.addQueryParameter("number", "100");
         String url = builder.build().toString();

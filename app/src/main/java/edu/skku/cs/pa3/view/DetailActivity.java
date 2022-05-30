@@ -17,6 +17,7 @@ import java.io.IOException;
 import edu.skku.cs.pa3.R;
 import edu.skku.cs.pa3.adapter.StepListAdapter;
 import edu.skku.cs.pa3.model.AddLike;
+import edu.skku.cs.pa3.model.DeleteLike;
 import edu.skku.cs.pa3.model.Steps;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -31,7 +32,7 @@ public class DetailActivity extends AppCompatActivity {
     private StepListAdapter listAdapter;
     private ListView listView;
     private Button likeButton;
-    private String email, title, image;
+    private String email, title, image, from;
     private int id;
 
     @Override
@@ -44,6 +45,7 @@ public class DetailActivity extends AppCompatActivity {
         id = intent.getIntExtra("id", 0);
         title = intent.getStringExtra("title");
         image = intent.getStringExtra("image");
+        from = intent.getStringExtra("from");
         Log.i("test", "id: " + id + "email: " + email);
 
         listView = findViewById(R.id.listView);
@@ -53,7 +55,7 @@ public class DetailActivity extends AppCompatActivity {
         OkHttpClient client = new OkHttpClient();
 
         HttpUrl.Builder builder = HttpUrl.parse("https://api.spoonacular.com/recipes/" + id + "/analyzedInstructions").newBuilder();
-        builder.addQueryParameter("apiKey", "644a503313de4685ab88325146e8b5e9");
+        builder.addQueryParameter("apiKey", "f335ea8dc7be41eb83d9c496a216d2c8");
         String url = builder.build().toString();
 
         Request request = new Request.Builder().url(url).build();
@@ -81,18 +83,39 @@ public class DetailActivity extends AppCompatActivity {
         });
 
         likeButton = findViewById(R.id.likeButton);
+        if (from.equals("like")) {
+            likeButton.setSelected(true);
+        }
+
         likeButton.setOnClickListener(view -> {
             OkHttpClient client2 = new OkHttpClient();
+            String json, url2;
 
-            AddLike data = new AddLike();
-            data.setEmail(email);
-            data.setNewLike(id + "#" + title + "#" + image);
+            if (!likeButton.isSelected()) {
+                Log.i("test", "00000");
+                AddLike data = new AddLike();
+                data.setEmail(email);
+                data.setNewLike(id + "#" + title + "#" + image);
 
-            Gson gson = new Gson();
-            String json = gson.toJson(data, AddLike.class);
+                Gson gson = new Gson();
+                json = gson.toJson(data, AddLike.class);
 
-            HttpUrl.Builder builder2 = HttpUrl.parse("https://8mjpn0w8ob.execute-api.ap-northeast-2.amazonaws.com/map/addlike").newBuilder();
-            String url2 = builder2.build().toString();
+                HttpUrl.Builder builder2 = HttpUrl.parse("https://8mjpn0w8ob.execute-api.ap-northeast-2.amazonaws.com/map/addlike").newBuilder();
+                url2 = builder2.build().toString();
+                likeButton.setSelected(true);
+            }
+            else {
+                Log.i("test", "11111");
+                DeleteLike data = new DeleteLike();
+                data.setEmail(email);
+                data.setDelete(id + "#" + title + "#" + image);
+
+                Gson gson = new Gson();
+                json = gson.toJson(data, DeleteLike.class);
+                HttpUrl.Builder builder2 = HttpUrl.parse("https://8mjpn0w8ob.execute-api.ap-northeast-2.amazonaws.com/map/deletelike").newBuilder();
+                url2 = builder2.build().toString();
+                likeButton.setSelected(false);
+            }
 
             Request request2 = new Request.Builder().url(url2).post(RequestBody.create(json, MediaType.parse("application/json"))).build();
 
