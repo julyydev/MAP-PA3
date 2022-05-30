@@ -75,7 +75,6 @@ public class DetailActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         listAdapter.setItems(stepsList[0].getSteps());
-                        Log.i("TEST", listAdapter.getItem(3).getStep());
                         listAdapter.notifyDataSetChanged();
                     }
                 });

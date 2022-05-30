@@ -22,4 +22,16 @@
         android:numColumns="2"
         android:verticalSpacing="15dp" />
 
+    <TextView
+        android:id="@android:id/empty"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="No Item"
+        android:textSize="20sp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

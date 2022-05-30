@@ -40,7 +40,6 @@ public class SearchPresenter implements SearchContract.Presenter {
     }
 
     public void loadRecipes(RecipesByName response) {
-        Log.i("TEST", "response: " + response.getResults()[0].getTitle());
         adapterModel.setRecipes(response.getResults());
     }
 }

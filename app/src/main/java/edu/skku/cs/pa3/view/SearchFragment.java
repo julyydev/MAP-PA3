@@ -37,6 +37,7 @@ public class SearchFragment extends Fragment implements SearchContract.View {
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_search, container, false);
         recipeGridView = rootView.findViewById(R.id.gridView);
+        recipeGridView.setEmptyView(rootView.findViewById(R.id.noItemTextView));
         recipeGridAdapter = new RecipeGridAdapter();
         recipeGridView.setAdapter(recipeGridAdapter);
 
@@ -65,6 +66,13 @@ public class SearchFragment extends Fragment implements SearchContract.View {
             if (i == KeyEvent.KEYCODE_ENTER) {
                 presenter.loadName(editText.getText().toString());
                 presenter.searchRecipes();
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
                 return true;
             }
             else {

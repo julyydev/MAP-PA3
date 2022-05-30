@@ -3,6 +3,7 @@ package edu.skku.cs.pa3;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,6 +61,7 @@ public class LikeGridAdapter extends BaseAdapter {
 
     public void setLikes(String[] likes) {
         this.likes = new ArrayList<>();
+        Log.i("test", "length: " + likes.length);
         for (int i = 0; i < likes.length; i++) {
             Recipe newRecipe = new Recipe();
             String[] split = likes[i].split("#");

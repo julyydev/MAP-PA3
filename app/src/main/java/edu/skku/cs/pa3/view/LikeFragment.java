@@ -75,7 +75,6 @@ public class LikeFragment extends Fragment {
                 final String res = response.body().string();
                 Gson gson = new GsonBuilder().create();
                 final Likes likes = gson.fromJson(res, Likes.class);
-                Log.i("TEST", "?>??" + likes.getLikes()[0]);
 
                 getActivity().runOnUiThread(new Runnable() {
                     @Override

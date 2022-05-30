@@ -76,10 +76,9 @@ public class RecipesByName implements SearchContract.Model {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 final String res = response.body().string();
-                Log.i("TEST", res);
+                Log.i("TEST", "res: " + res);
                 Gson gson = new GsonBuilder().create();
                 final RecipesByName recipes = gson.fromJson(res, RecipesByName.class);
-                Log.i("TEST", recipes.getResults()[0].getTitle());
                 onFinishedListener.onFinished(recipes);
             }
         });
