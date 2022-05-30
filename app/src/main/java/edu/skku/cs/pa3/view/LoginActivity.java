@@ -34,18 +34,5 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         kakaoLoginButton.setOnClickListener(view -> {
             presenter.onLoginButtonClicked(LoginActivity.this);
         });
-
-//        if (AuthApiClient.getInstance().hasToken()) {
-//            Intent intent = new Intent(this, MainActivity.class);
-//            UserApiClient.getInstance().me((user, throwable) -> {
-//                if (user != null) {
-//                    intent.putExtra("email", user.getKakaoAccount().getEmail());
-//                    intent.putExtra("nickname", user.getKakaoAccount().getProfile().getNickname());
-//                    intent.putExtra("profileImage", user.getKakaoAccount().getProfile().getProfileImageUrl());
-//                }
-//                return null;
-//            });
-//            startActivity(intent);
-//        }
     }
 }
