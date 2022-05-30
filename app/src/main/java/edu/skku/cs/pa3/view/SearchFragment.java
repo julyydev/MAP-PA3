@@ -40,10 +40,18 @@ public class SearchFragment extends Fragment implements SearchContract.View {
         recipeGridAdapter = new RecipeGridAdapter();
         recipeGridView.setAdapter(recipeGridAdapter);
 
+        String email = getArguments().getString("email");
+        Log.i("test", "sf - email: " + email);
+
         recipeGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(getContext(), DetailActivity.class);
+                intent.putExtra("email", email);
+                intent.putExtra("id", recipeGridAdapter.getItem(i).getId());
+                intent.putExtra("title", recipeGridAdapter.getItem(i).getTitle());
+                intent.putExtra("image", recipeGridAdapter.getItem(i).getImage());
+
                 startActivity(intent);
             }
         });
