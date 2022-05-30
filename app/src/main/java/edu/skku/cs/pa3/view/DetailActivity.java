@@ -7,8 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -32,6 +35,8 @@ public class DetailActivity extends AppCompatActivity {
     private StepListAdapter listAdapter;
     private ListView listView;
     private Button likeButton;
+    private ImageView detailImageView;
+    private TextView detailTextView;
     private String email, title, image, from;
     private int id;
 
@@ -51,6 +56,11 @@ public class DetailActivity extends AppCompatActivity {
         listView = findViewById(R.id.listView);
         listAdapter = new StepListAdapter();
         listView.setAdapter(listAdapter);
+
+        detailImageView = findViewById(R.id.detailImageView);
+        detailTextView = findViewById(R.id.detailTextView);
+        Glide.with(this).load(image).into(detailImageView);
+        detailTextView.setText(title);
 
         OkHttpClient client = new OkHttpClient();
 

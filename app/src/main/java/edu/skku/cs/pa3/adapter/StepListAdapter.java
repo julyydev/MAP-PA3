@@ -45,7 +45,7 @@ public class StepListAdapter extends BaseAdapter {
         }
 
         TextView textView = view.findViewById(R.id.cellTextView);
-        textView.setText(item.getStep());
+        textView.setText("STEP " + item.getNumber() + ": " + item.getStep());
 
         return view;
     }
