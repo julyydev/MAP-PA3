@@ -5,21 +5,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import edu.skku.cs.pa3.model.Recipe;
+import edu.skku.cs.pa3.model.Step;
 
 public class StepListAdapter extends BaseAdapter {
-    ArrayList<String> items;
+    ArrayList<Step> items;
 
     public StepListAdapter() {
         items = new ArrayList<>();
-        items.add("");
-        items.add("");
-        items.add("");
-        items.add("");
-        items.add("");
     }
 
     @Override
@@ -28,7 +24,7 @@ public class StepListAdapter extends BaseAdapter {
     }
 
     @Override
-    public String getItem(int i) {
+    public Step getItem(int i) {
         return items.get(i);
     }
 
@@ -40,13 +36,23 @@ public class StepListAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         final Context context = viewGroup.getContext();
-        String item = items.get(i);
+        Step item = items.get(i);
 
         if (view == null) {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             view = layoutInflater.inflate(R.layout.cell_step, viewGroup, false);
         }
 
+        TextView textView = view.findViewById(R.id.cellTextView);
+        textView.setText(item.getStep());
+
         return view;
+    }
+
+    public void setItems(Step[] steps) {
+        items = new ArrayList<>();
+        for (int i = 0; i < steps.length; i++) {
+            items.add(steps[i]);
+        }
     }
 }

@@ -69,8 +69,6 @@ public class RecipeGridAdapter extends BaseAdapter implements RecipeGridAdapterC
         this.recipes = new ArrayList<>();
         for (int i = 0; i < recipes.length; i++) {
             this.recipes.add(recipes[i]);
-            Log.i("TEST", "!!!");
-            Log.i("TEST", recipes[i].getTitle());
         }
     }
 }
