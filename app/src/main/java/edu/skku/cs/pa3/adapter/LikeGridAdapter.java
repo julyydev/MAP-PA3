@@ -1,4 +1,4 @@
-package edu.skku.cs.pa3;
+package edu.skku.cs.pa3.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -15,23 +15,24 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-import edu.skku.cs.pa3.contract.RecipeGridAdapterContract;
+import edu.skku.cs.pa3.R;
 import edu.skku.cs.pa3.model.Recipe;
 
-public class RecipeGridAdapter extends BaseAdapter implements RecipeGridAdapterContract.View, RecipeGridAdapterContract.Model {
-    ArrayList<Recipe> recipes = new ArrayList<>();
+public class LikeGridAdapter extends BaseAdapter {
+    ArrayList<Recipe> likes = new ArrayList<>();
 
-    public RecipeGridAdapter() {
+    public LikeGridAdapter() {
+
     }
 
     @Override
     public int getCount() {
-        return recipes.size();
+        return likes.size();
     }
 
     @Override
     public Recipe getItem(int i) {
-        return recipes.get(i);
+        return likes.get(i);
     }
 
     @Override
@@ -42,7 +43,7 @@ public class RecipeGridAdapter extends BaseAdapter implements RecipeGridAdapterC
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         final Context context = viewGroup.getContext();
-        Recipe recipe = recipes.get(i);
+        Recipe recipe = likes.get(i);
 
         if (view == null) {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
@@ -59,16 +60,16 @@ public class RecipeGridAdapter extends BaseAdapter implements RecipeGridAdapterC
         return view;
     }
 
-    @Override
-    public void notifyAdapter() {
-        notifyDataSetChanged();
-    }
-
-    @Override
-    public void setRecipes(Recipe[] recipes) {
-        this.recipes = new ArrayList<>();
-        for (int i = 0; i < recipes.length; i++) {
-            this.recipes.add(recipes[i]);
+    public void setLikes(String[] likes) {
+        this.likes = new ArrayList<>();
+        Log.i("test", "length: " + likes.length);
+        for (int i = 0; i < likes.length; i++) {
+            Recipe newRecipe = new Recipe();
+            String[] split = likes[i].split("#");
+            newRecipe.setId(Integer.parseInt(split[0]));
+            newRecipe.setTitle(split[1]);
+            newRecipe.setImage(split[2]);
+            this.likes.add(newRecipe);
         }
     }
 }

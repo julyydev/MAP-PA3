@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +15,10 @@ import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 
-import edu.skku.cs.pa3.LikeGridAdapter;
+import edu.skku.cs.pa3.adapter.LikeGridAdapter;
 import edu.skku.cs.pa3.R;
-import edu.skku.cs.pa3.RecipeGridAdapter;
-import edu.skku.cs.pa3.model.AddUser;
 import edu.skku.cs.pa3.model.GetUser;
 import edu.skku.cs.pa3.model.Likes;
-import edu.skku.cs.pa3.model.Steps;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;

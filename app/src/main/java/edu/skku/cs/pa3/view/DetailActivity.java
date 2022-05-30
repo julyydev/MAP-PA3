@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -16,7 +15,7 @@ import com.google.gson.GsonBuilder;
 import java.io.IOException;
 
 import edu.skku.cs.pa3.R;
-import edu.skku.cs.pa3.StepListAdapter;
+import edu.skku.cs.pa3.adapter.StepListAdapter;
 import edu.skku.cs.pa3.model.AddLike;
 import edu.skku.cs.pa3.model.Steps;
 import okhttp3.Call;

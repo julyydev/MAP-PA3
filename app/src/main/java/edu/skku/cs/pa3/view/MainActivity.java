@@ -1,36 +1,19 @@
 package edu.skku.cs.pa3.view;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
-import com.google.gson.Gson;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import edu.skku.cs.pa3.PagerAdapter;
+import edu.skku.cs.pa3.adapter.PagerAdapter;
 import edu.skku.cs.pa3.R;
 import edu.skku.cs.pa3.contract.MainContract;
-import edu.skku.cs.pa3.model.AddUser;
 import edu.skku.cs.pa3.presenter.MainPresenter;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.HttpUrl;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View {
     private String nickname;

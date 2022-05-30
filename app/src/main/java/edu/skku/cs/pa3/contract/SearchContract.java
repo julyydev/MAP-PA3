@@ -1,6 +1,5 @@
 package edu.skku.cs.pa3.contract;
 
-import edu.skku.cs.pa3.RecipeGridAdapter;
 import edu.skku.cs.pa3.model.RecipesByName;
 
 public interface SearchContract {

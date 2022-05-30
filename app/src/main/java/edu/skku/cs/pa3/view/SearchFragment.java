@@ -17,7 +17,7 @@ import android.widget.EditText;
 import android.widget.GridView;
 
 import edu.skku.cs.pa3.R;
-import edu.skku.cs.pa3.RecipeGridAdapter;
+import edu.skku.cs.pa3.adapter.RecipeGridAdapter;
 import edu.skku.cs.pa3.contract.SearchContract;
 import edu.skku.cs.pa3.presenter.SearchPresenter;
 

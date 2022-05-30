@@ -1,4 +1,4 @@
-package edu.skku.cs.pa3;
+package edu.skku.cs.pa3.adapter;
 
 import android.os.Bundle;
 

@@ -1,4 +1,4 @@
-package edu.skku.cs.pa3;
+package edu.skku.cs.pa3.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import edu.skku.cs.pa3.R;
 import edu.skku.cs.pa3.model.Step;
 
 public class StepListAdapter extends BaseAdapter {
