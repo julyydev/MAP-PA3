@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         Bundle bundle = new Bundle();
         bundle.putString("email", email);
         pagerAdapter.setArguments(0, bundle);
+        pagerAdapter.setArguments(1, bundle);
         viewPager.setAdapter(pagerAdapter);
         viewPager.setUserInputEnabled(false); // 이 줄을 주석처리 하면 슬라이딩으로 탭을 바꿀 수 있다.
 
